@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forge — Мессенджер нового поколения</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blurple: #5865F2;
+      --blurple-dark: #4752C4;
+      --blurple-light: #7289DA;
+      --neon: #7c6bff;
+      --bg: #0b0b0f;
+      --bg-card: #121218;
+      --text: #ffffff;
+      --text-muted: #a1a1aa;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(88, 101, 242, 0.22) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.45rem;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #5865F2, #7c6bff);
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(88, 101, 242, 0.5);
+    }
+
+    .logo-icon svg { width: 22px; height: 22px; fill: white; }
+
+    nav { display: flex; gap: 36px; }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: white; }
+
+    /* Hero */
+    .hero {
+      padding: 70px 0 90px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(88, 101, 242, 0.12);
+      color: #a5b4fc;
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 28px;
+      border: 1px solid rgba(88, 101, 242, 0.28);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 6vw, 4.3rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #818cf8, #c4b5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 48px;
+    }
+
+    /* Buttons */
+    .download-buttons {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 17px 30px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .btn svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #5865F2, #7c6bff);
+      color: white;
+      box-shadow: 0 0 0 1px rgba(124, 107, 255, 0.3),
+                  0 8px 30px rgba(88, 101, 242, 0.45),
+                  0 0 40px rgba(88, 101, 242, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 0 1px rgba(124, 107, 255, 0.5),
+                  0 12px 40px rgba(88, 101, 242, 0.55),
+                  0 0 60px rgba(88, 101, 242, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: 0 0 0 1px rgba(124, 107, 255, 0.08),
+                  0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(124, 107, 255, 0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(88, 101, 242, 0.25),
+                  0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    .download-note {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    /* Features */
+    .features { padding: 30px 0 90px; }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 50px;
+      font-size: 1.05rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 18px;
+      padding: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(88, 101, 242, 0.35);
+      box-shadow: 0 0 30px rgba(88, 101, 242, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      width: 46px;
+      height: 46px;
+      background: linear-gradient(135deg, rgba(88,101,242,0.2), rgba(124,107,255,0.12));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border: 1px solid rgba(88,101,242,0.15);
+    }
+
+    .feature-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #a5b4fc;
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* Platforms */
+    .platforms { padding: 20px 0 100px; }
+
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .platform-card {
+      background: linear-gradient(160deg, #14141c, #0f0f15);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 22px;
+      padding: 40px 32px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .platform-card:hover {
+      border-color: rgba(88, 101, 242, 0.3);
+      box-shadow: 0 0 40px rgba(88, 101, 242, 0.1);
+    }
+
+    .platform-icon-wrap {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      background: linear-gradient(135deg, rgba(88,101,242,0.2), rgba(124,107,255,0.1));
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(88,101,242,0.2);
+      box-shadow: 0 0 25px rgba(88,101,242,0.15);
+    }
+
+    .platform-icon-wrap svg {
+      width: 30px;
+      height: 30px;
+      fill: #c4b5fd;
+    }
+
+    .platform-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .platform-card p {
+      color: var(--text-muted);
+      margin-bottom: 26px;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 36px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 640px) {
+      nav { display: none; }
+      .hero { padding: 40px 0 60px; }
+      .download-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V6l-8-4z"/></svg>
+        </div>
+        Forge
+      </div>
+      <nav>
+        <a href="#features">Возможности</a>
+        <a href="#download">Скачать</a>
+        <a href="#plus">Forge Plus</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-badge">Новый мессенджер для сообществ</div>
+      <h1>Общайся в<br><span>своём стиле</span></h1>
+      <p>Forge — современный мессенджер с каналами, серверами, ролями и голосовой связью. Красиво, быстро и полностью под твоим контролем.</p>
+
+      <div class="download-buttons" id="download">
+        <a href="#" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5L10.5 4v7.5H3V5.5zm0 13L10.5 20v-7.5H3V18.5zM11.5 4L21 2.5v9H11.5V4zm0 17.5L21 20.5v-9H11.5v9z"/></svg>
+          Скачать для Windows
+        </a>
+        <a href="#" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24A11.4 11.4 0 0 0 12 8.25c-1.35 0-2.63.24-3.81.66L6.3 5.67c-.18-.28-.54-.37-.83-.22-.3.16-.42.54-.26.85L7.05 9.48C3.87 11.2 1.75 14.7 1.75 18.75h20.5c0-4.05-2.12-7.55-5.65-9.27zM7.5 16.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm9 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+          Скачать для Android
+        </a>
+      </div>
+      <p class="download-note">Бесплатно • Без рекламы • Быстрая установка</p>
+    </section>
+
+    <section class="features" id="features">
+      <h2 class="section-title">Всё, что нужно для общения</h2>
+      <p class="section-subtitle">Мощные инструменты в красивой обёртке</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Каналы и серверы</h3>
+          <p>Создавай сообщества с текстовыми и голосовыми каналами, категориями и правами доступа.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Друзья и группы</h3>
+          <p>Добавляй друзей, создавай групповые чаты и оставайся на связи в любое время.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Роли и модерация</h3>
+          <p>Гибкая система ролей, права доступа и удобные инструменты модерации.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="17.5" cy="16.5" r="2.5"/><path d="M8.5 10.5l5-2"/><path d="M10.5 13.5l5 2"/></svg>
+          </div>
+          <h3>Свой стиль</h3>
+          <p>Темы, кастомные эмодзи, значки и полная кастомизация внешнего вида.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Быстро и легко</h3>
+          <p>Оптимизирован для скорости. Работает даже на слабых устройствах.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3>Приватность</h3>
+          <p>Твои данные принадлежат тебе. Без слежки и продажи информации.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="platforms">
+      <h2 class="section-title">Доступен везде</h2>
+      <p class="section-subtitle">Скачай Forge на любое устройство</p>
+
+      <div class="platforms-grid">
+        <div class="platform-card">
+          <div class="platform-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M3 5.5L10.5 4v7.5H3V5.5zm0 13L10.5 20v-7.5H3V18.5zM11.5 4L21 2.5v9H11.5V4zm0 17.5L21 20.5v-9H11.5v9z"/></svg>
+          </div>
+          <h3>Windows</h3>
+          <p>Полноценное приложение для компьютера со всеми функциями.</p>
+          <a href="#" class="btn btn-primary" style="width:100%; justify-content:center;">Скачать .exe</a>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24A11.4 11.4 0 0 0 12 8.25c-1.35 0-2.63.24-3.81.66L6.3 5.67c-.18-.28-.54-.37-.83-.22-.3.16-.42.54-.26.85L7.05 9.48C3.87 11.2 1.75 14.7 1.75 18.75h20.5c0-4.05-2.12-7.55-5.65-9.27zM7.5 16.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm9 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+          </div>
+          <h3>Android</h3>
+          <p>Мобильное приложение с удобным интерфейсом и быстрыми уведомлениями.</p>
+          <a href="#" class="btn btn-secondary" style="width:100%; justify-content:center;">Скачать APK</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Forge. Сделано для свободного общения.</p>
+    </div>
+  </footer>
+</body>
+</html>
