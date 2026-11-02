@@ -1,2 +1,0 @@
-# Put your Telegram ID here (one per line)
-# Get ID from @userinfobot
