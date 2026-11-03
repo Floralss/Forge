@@ -10,9 +10,6 @@
   <style>
     :root {
       --blurple: #5865F2;
-      --blurple-dark: #4752C4;
-      --blurple-light: #7289DA;
-      --neon: #7c6bff;
       --bg: #0b0b0f;
       --bg-card: #121218;
       --text: #ffffff;
@@ -150,7 +147,6 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       border: none;
       cursor: pointer;
-      overflow: hidden;
     }
 
     .btn svg {
@@ -356,11 +352,19 @@
       <p>Forge — современный мессенджер с каналами, серверами, ролями и голосовой связью. Красиво, быстро и полностью под твоим контролем.</p>
 
       <div class="download-buttons" id="download">
-        <a href="https://www.dropbox.com/scl/fi/5r1t0py7ol9gint0k6288/Forge.Setup.1.7.0.exe?rlkey=bw01ponzlb929jjhg69h2ambb&st=04rwajzq&dl=1" class="btn btn-primary">
+        <a href="https://www.dropbox.com/scl/fi/5r1t0py7ol9gint0k6288/Forge.Setup.1.7.0.exe?rlkey=bw01ponzlb929jjhg69h2ambb&st=04rwajzq&dl=1" 
+           class="btn btn-primary"
+           download
+           target="_blank"
+           rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5L10.5 4v7.5H3V5.5zm0 13L10.5 20v-7.5H3V18.5zM11.5 4L21 2.5v9H11.5V4zm0 17.5L21 20.5v-9H11.5v9z"/></svg>
           Скачать для Windows
         </a>
-        <a href="https://www.dropbox.com/scl/fi/8dk61x7sgqj2vovqhte9g/forge.apk?rlkey=z1am4dz86gao8uyr8i450140z&st=d9zr1v4s&dl=1" class="btn btn-secondary">
+        <a href="https://www.dropbox.com/scl/fi/8dk61x7sgqj2vovqhte9g/forge.apk?rlkey=z1am4dz86gao8uyr8i450140z&st=d9zr1v4s&dl=1" 
+           class="btn btn-secondary"
+           download
+           target="_blank"
+           rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24A11.4 11.4 0 0 0 12 8.25c-1.35 0-2.63.24-3.81.66L6.3 5.67c-.18-.28-.54-.37-.83-.22-.3.16-.42.54-.26.85L7.05 9.48C3.87 11.2 1.75 14.7 1.75 18.75h20.5c0-4.05-2.12-7.55-5.65-9.27zM7.5 16.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm9 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
           Скачать для Android
         </a>
@@ -429,7 +433,14 @@
           </div>
           <h3>Windows</h3>
           <p>Полноценное приложение для компьютера со всеми функциями.</p>
-          <a href="https://www.dropbox.com/scl/fi/5r1t0py7ol9gint0k6288/Forge.Setup.1.7.0.exe?rlkey=bw01ponzlb929jjhg69h2ambb&st=04rwajzq&dl=1" class="btn btn-primary" style="width:100%; justify-content:center;">Скачать .exe</a>
+          <a href="https://www.dropbox.com/scl/fi/5r1t0py7ol9gint0k6288/Forge.Setup.1.7.0.exe?rlkey=bw01ponzlb929jjhg69h2ambb&st=04rwajzq&dl=1" 
+             class="btn btn-primary" 
+             style="width:100%; justify-content:center;"
+             download
+             target="_blank"
+             rel="noopener">
+            Скачать .exe
+          </a>
         </div>
         <div class="platform-card">
           <div class="platform-icon-wrap">
@@ -437,7 +448,14 @@
           </div>
           <h3>Android</h3>
           <p>Мобильное приложение с удобным интерфейсом и быстрыми уведомлениями.</p>
-          <a href="https://www.dropbox.com/scl/fi/8dk61x7sgqj2vovqhte9g/forge.apk?rlkey=z1am4dz86gao8uyr8i450140z&st=d9zr1v4s&dl=1" class="btn btn-secondary" style="width:100%; justify-content:center;">Скачать APK</a>
+          <a href="https://www.dropbox.com/scl/fi/8dk61x7sgqj2vovqhte9g/forge.apk?rlkey=z1am4dz86gao8uyr8i450140z&st=d9zr1v4s&dl=1" 
+             class="btn btn-secondary" 
+             style="width:100%; justify-content:center;"
+             download
+             target="_blank"
+             rel="noopener">
+            Скачать APK
+          </a>
         </div>
       </div>
     </section>
@@ -448,5 +466,15 @@
       <p>© 2026 Forge. Сделано для свободного общения.</p>
     </div>
   </footer>
+
+  <script>
+    // Принудительное скачивание через создание ссылки
+    document.querySelectorAll('a[download]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Оставляем стандартное поведение + target _blank
+        // Dropbox иногда требует открытия в новой вкладке
+      });
+    });
+  </script>
 </body>
 </html>
