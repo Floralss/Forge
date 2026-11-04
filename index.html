@@ -15,9 +15,7 @@
       --text: #ffffff;
       --text-muted: #a1a1aa;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
@@ -25,7 +23,6 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-
     body::before {
       content: '';
       position: fixed;
@@ -38,7 +35,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
     .container {
       max-width: 1140px;
       margin: 0 auto;
@@ -46,14 +42,12 @@
       position: relative;
       z-index: 1;
     }
-
     header {
       padding: 28px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
     .logo {
       display: flex;
       align-items: center;
@@ -62,7 +56,6 @@
       font-size: 1.45rem;
       letter-spacing: -0.5px;
     }
-
     .logo-icon {
       width: 40px;
       height: 40px;
@@ -73,9 +66,7 @@
       justify-content: center;
       box-shadow: 0 0 20px rgba(88, 101, 242, 0.5);
     }
-
     .logo-icon svg { width: 22px; height: 22px; fill: white; }
-
     nav { display: flex; gap: 36px; }
     nav a {
       color: var(--text-muted);
@@ -85,12 +76,10 @@
       transition: color 0.2s;
     }
     nav a:hover { color: white; }
-
     .hero {
       padding: 70px 0 90px;
       text-align: center;
     }
-
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -104,7 +93,6 @@
       margin-bottom: 28px;
       border: 1px solid rgba(88, 101, 242, 0.28);
     }
-
     .hero h1 {
       font-size: clamp(2.7rem, 6vw, 4.3rem);
       font-weight: 800;
@@ -112,20 +100,17 @@
       line-height: 1.08;
       margin-bottom: 18px;
     }
-
     .hero h1 span {
       background: linear-gradient(135deg, #818cf8, #c4b5fd);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     .hero p {
       font-size: 1.2rem;
       color: var(--text-muted);
       max-width: 540px;
       margin: 0 auto 48px;
     }
-
     .download-buttons {
       display: flex;
       gap: 18px;
@@ -133,7 +118,6 @@
       flex-wrap: wrap;
       margin-bottom: 18px;
     }
-
     .btn {
       position: relative;
       display: inline-flex;
@@ -148,13 +132,11 @@
       border: none;
       cursor: pointer;
     }
-
     .btn svg {
       width: 22px;
       height: 22px;
       flex-shrink: 0;
     }
-
     .btn-primary {
       background: linear-gradient(135deg, #5865F2, #7c6bff);
       color: white;
@@ -162,14 +144,12 @@
                   0 8px 30px rgba(88, 101, 242, 0.45),
                   0 0 40px rgba(88, 101, 242, 0.2);
     }
-
     .btn-primary:hover {
       transform: translateY(-3px);
       box-shadow: 0 0 0 1px rgba(124, 107, 255, 0.5),
                   0 12px 40px rgba(88, 101, 242, 0.55),
                   0 0 60px rgba(88, 101, 242, 0.3);
     }
-
     .btn-secondary {
       background: rgba(255,255,255,0.04);
       color: white;
@@ -177,7 +157,6 @@
       box-shadow: 0 0 0 1px rgba(124, 107, 255, 0.08),
                   0 4px 20px rgba(0,0,0,0.3);
     }
-
     .btn-secondary:hover {
       background: rgba(255,255,255,0.07);
       border-color: rgba(124, 107, 255, 0.35);
@@ -185,14 +164,11 @@
       box-shadow: 0 0 25px rgba(88, 101, 242, 0.25),
                   0 8px 30px rgba(0,0,0,0.4);
     }
-
     .download-note {
       color: var(--text-muted);
       font-size: 0.88rem;
     }
-
     .features { padding: 30px 0 90px; }
-
     .section-title {
       text-align: center;
       font-size: 2.1rem;
@@ -200,20 +176,17 @@
       letter-spacing: -1px;
       margin-bottom: 12px;
     }
-
     .section-subtitle {
       text-align: center;
       color: var(--text-muted);
       margin-bottom: 50px;
       font-size: 1.05rem;
     }
-
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 20px;
     }
-
     .feature-card {
       background: var(--bg-card);
       border: 1px solid rgba(255,255,255,0.05);
@@ -221,13 +194,11 @@
       padding: 28px;
       transition: all 0.3s ease;
     }
-
     .feature-card:hover {
       border-color: rgba(88, 101, 242, 0.35);
       box-shadow: 0 0 30px rgba(88, 101, 242, 0.08);
       transform: translateY(-4px);
     }
-
     .feature-icon {
       width: 46px;
       height: 46px;
@@ -239,7 +210,6 @@
       margin-bottom: 18px;
       border: 1px solid rgba(88,101,242,0.15);
     }
-
     .feature-icon svg {
       width: 22px;
       height: 22px;
@@ -247,20 +217,16 @@
       fill: none;
       stroke-width: 1.8;
     }
-
     .feature-card h3 {
       font-size: 1.15rem;
       font-weight: 700;
       margin-bottom: 8px;
     }
-
     .feature-card p {
       color: var(--text-muted);
       font-size: 0.92rem;
     }
-
     .platforms { padding: 20px 0 100px; }
-
     .platforms-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -268,7 +234,6 @@
       max-width: 720px;
       margin: 0 auto;
     }
-
     .platform-card {
       background: linear-gradient(160deg, #14141c, #0f0f15);
       border: 1px solid rgba(255,255,255,0.06);
@@ -277,12 +242,10 @@
       text-align: center;
       transition: all 0.3s ease;
     }
-
     .platform-card:hover {
       border-color: rgba(88, 101, 242, 0.3);
       box-shadow: 0 0 40px rgba(88, 101, 242, 0.1);
     }
-
     .platform-icon-wrap {
       width: 64px;
       height: 64px;
@@ -295,25 +258,21 @@
       border: 1px solid rgba(88,101,242,0.2);
       box-shadow: 0 0 25px rgba(88,101,242,0.15);
     }
-
     .platform-icon-wrap svg {
       width: 30px;
       height: 30px;
       fill: #c4b5fd;
     }
-
     .platform-card h3 {
       font-size: 1.4rem;
       font-weight: 700;
       margin-bottom: 8px;
     }
-
     .platform-card p {
       color: var(--text-muted);
       margin-bottom: 26px;
       font-size: 0.95rem;
     }
-
     footer {
       border-top: 1px solid rgba(255,255,255,0.05);
       padding: 36px 0;
@@ -321,7 +280,6 @@
       color: var(--text-muted);
       font-size: 0.88rem;
     }
-
     @media (max-width: 640px) {
       nav { display: none; }
       .hero { padding: 40px 0 60px; }
@@ -352,17 +310,15 @@
       <p>Forge — современный мессенджер с каналами, серверами, ролями и голосовой связью. Красиво, быстро и полностью под твоим контролем.</p>
 
       <div class="download-buttons" id="download">
-        <a href="https://www.dropbox.com/scl/fi/5r1t0py7ol9gint0k6288/Forge.Setup.1.7.0.exe?rlkey=bw01ponzlb929jjhg69h2ambb&st=04rwajzq&dl=1" 
+        <a href="https://www.dropbox.com/scl/fi/0hoosofl0eucgalyvxdpi/Forge.Setup.1.8.12.exe?rlkey=gyfpbywhpapohvjkxvxq3o2ft&st=4qzmclgt&dl=1" 
            class="btn btn-primary"
-           download
            target="_blank"
            rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5L10.5 4v7.5H3V5.5zm0 13L10.5 20v-7.5H3V18.5zM11.5 4L21 2.5v9H11.5V4zm0 17.5L21 20.5v-9H11.5v9z"/></svg>
           Скачать для Windows
         </a>
-        <a href="https://www.dropbox.com/scl/fi/8dk61x7sgqj2vovqhte9g/forge.apk?rlkey=z1am4dz86gao8uyr8i450140z&st=d9zr1v4s&dl=1" 
+        <a href="https://www.dropbox.com/scl/fi/03q369tbopqp5iwoyr1p0/forge.apk?rlkey=5xhg9cmem9ez8ubyzccmmzn4x&st=xh166n12&dl=1" 
            class="btn btn-secondary"
-           download
            target="_blank"
            rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24A11.4 11.4 0 0 0 12 8.25c-1.35 0-2.63.24-3.81.66L6.3 5.67c-.18-.28-.54-.37-.83-.22-.3.16-.42.54-.26.85L7.05 9.48C3.87 11.2 1.75 14.7 1.75 18.75h20.5c0-4.05-2.12-7.55-5.65-9.27zM7.5 16.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm9 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
@@ -386,7 +342,7 @@
         </div>
         <div class="feature-card">
           <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <h3>Друзья и группы</h3>
           <p>Добавляй друзей, создавай групповые чаты и оставайся на связи в любое время.</p>
@@ -433,10 +389,9 @@
           </div>
           <h3>Windows</h3>
           <p>Полноценное приложение для компьютера со всеми функциями.</p>
-          <a href="https://www.dropbox.com/scl/fi/5r1t0py7ol9gint0k6288/Forge.Setup.1.7.0.exe?rlkey=bw01ponzlb929jjhg69h2ambb&st=04rwajzq&dl=1" 
+          <a href="https://www.dropbox.com/scl/fi/0hoosofl0eucgalyvxdpi/Forge.Setup.1.8.12.exe?rlkey=gyfpbywhpapohvjkxvxq3o2ft&st=4qzmclgt&dl=1" 
              class="btn btn-primary" 
              style="width:100%; justify-content:center;"
-             download
              target="_blank"
              rel="noopener">
             Скачать .exe
@@ -448,10 +403,9 @@
           </div>
           <h3>Android</h3>
           <p>Мобильное приложение с удобным интерфейсом и быстрыми уведомлениями.</p>
-          <a href="https://www.dropbox.com/scl/fi/8dk61x7sgqj2vovqhte9g/forge.apk?rlkey=z1am4dz86gao8uyr8i450140z&st=d9zr1v4s&dl=1" 
+          <a href="https://www.dropbox.com/scl/fi/03q369tbopqp5iwoyr1p0/forge.apk?rlkey=5xhg9cmem9ez8ubyzccmmzn4x&st=xh166n12&dl=1" 
              class="btn btn-secondary" 
              style="width:100%; justify-content:center;"
-             download
              target="_blank"
              rel="noopener">
             Скачать APK
@@ -466,15 +420,5 @@
       <p>© 2026 Forge. Сделано для свободного общения.</p>
     </div>
   </footer>
-
-  <script>
-    // Принудительное скачивание через создание ссылки
-    document.querySelectorAll('a[download]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        // Оставляем стандартное поведение + target _blank
-        // Dropbox иногда требует открытия в новой вкладке
-      });
-    });
-  </script>
 </body>
 </html>
