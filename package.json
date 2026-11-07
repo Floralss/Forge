@@ -1,0 +1,12 @@
+{
+  "name": "forge-tg-bot",
+  "version": "1.0.0",
+  "private": true,
+  "main": "run.js",
+  "scripts": {
+    "start": "node run.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.6.0"
+  }
+}
