@@ -1,2 +1,0 @@
-python-telegram-bot==21.10
-firebase-admin==6.6.0
